@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ircengg_app *.css
+recursive-include ircengg_app *.csv
+recursive-include ircengg_app *.html
+recursive-include ircengg_app *.ico
+recursive-include ircengg_app *.js
+recursive-include ircengg_app *.json
+recursive-include ircengg_app *.md
+recursive-include ircengg_app *.png
+recursive-include ircengg_app *.py
+recursive-include ircengg_app *.svg
+recursive-include ircengg_app *.txt
+recursive-exclude ircengg_app *.pyc
