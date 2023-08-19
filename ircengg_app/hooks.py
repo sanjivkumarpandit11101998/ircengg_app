@@ -31,8 +31,20 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {"Project" : "public/js/project.js",
+              "Leave Application" : "public/js/leave_application.js",
+              "Sales Order" : "public/js/sales_order.js",
+              "Payroll Entry" : "public/js/payroll_entry.js",
+              "Task" : "public/js/task.js",
+              "Salary Slip" : "public/js/salary_slip.js",
+              "Expense Claim" : "public/js/expense_claim.js",
+              "Employee" : "public/js/employee.js",
+              "Attendance" : "public/js/attendance.js",
+              "Attendance Request" : "public/js/attendance_request.js",
+              "Employee Advance" : "public/js/employee_advance.js"
+              }
+doctype_list_js = {"Attendance" : "public/js/attendance_list.js",
+                   "Employee" : "public/js/employee_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -53,7 +65,7 @@ app_license = "MIT"
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
 
-# Installation
+# InstallationS
 # ------------
 
 # before_install = "ircengg_app.install.before_install"
@@ -75,12 +87,19 @@ app_license = "MIT"
 # -----------
 # Permissions evaluated in scripted ways
 
+permission_query_conditions = {
+	"Task": "ircengg_app.permissions.task.update_task_conditions",
+    "Project": "ircengg_app.permissions.project.project_user_conditions"
+}
+
+
 # permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# 	"Task": "ircengg_app.ircengg_app.custom_py.task.update_task_conditions",
+#     "Project": "ircengg_app.ircengg_app.custom_py.project.get_user_conditions"
 # }
-#
+
 # has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -90,6 +109,9 @@ app_license = "MIT"
 # override_doctype_class = {
 #	"ToDo": "custom_app.overrides.CustomToDo"
 # }
+override_doctype_class = {
+	"Asset Movement": "ircengg_app.ircengg_app.custom_py.asset_movement.transfer_asset_movement"
+}
 
 # Document Events
 # ---------------
@@ -102,6 +124,27 @@ app_license = "MIT"
 #		"on_trash": "method"
 #	}
 # }
+doc_events = {
+	"Leave Allocation": {
+		"on_update": "ircengg_app.ircengg_app.custom_py.leave_allocation.leave_allocation"
+	},
+	"Attendance": {
+		"before_submit": "ircengg_app.ircengg_app.custom_py.attendance.attendance_leave"
+	},
+    "Task": {
+		"on_update": "ircengg_app.ircengg_app.custom_py.task.task_assignment",
+        "after_insert": "ircengg_app.ircengg_app.custom_py.task.task_before_after_days",
+        "on_update": "ircengg_app.ircengg_app.custom_py.task.update_task_conditions"
+	},
+    "Project": {
+		"on_update": "ircengg_app.ircengg_app.custom_py.project.task_dependency",
+        "on_update": "ircengg_app.ircengg_app.custom_py.project.get_user_conditions"
+	},
+	"Sales Order": {
+		"on_update": "ircengg_app.ircengg_app.custom_py.sales_order.sales_order"
+	}
+}
+
 
 # Scheduled Tasks
 # ---------------
