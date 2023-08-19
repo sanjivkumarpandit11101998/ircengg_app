@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:travel_cat_name",
+ "creation": "2022-08-27 15:09:10.328392",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "travel_cat_name",
+  "travel_cat_desc"
+ ],
+ "fields": [
+  {
+   "fieldname": "travel_cat_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Category Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "travel_cat_desc",
+   "fieldtype": "Data",
+   "label": "Category Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-08-19 20:21:21.373275",
+ "modified_by": "Administrator",
+ "module": "Ircengg App",
+ "name": "Employee Advance Travel Category",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "read_only": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

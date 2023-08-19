@@ -1,0 +1,262 @@
+{
+ "actions": [],
+ "creation": "2021-05-10 21:31:03.132363",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_basic_information",
+  "advance_type",
+  "advance_amount",
+  "client_name",
+  "column_break_4",
+  "start_date",
+  "end_date",
+  "start_location",
+  "travel_advance_section",
+  "end_location",
+  "include_return",
+  "number_of_taxi",
+  "column_break_5",
+  "mode_of_travel",
+  "per_day_cost_of_taxi",
+  "accomodation_advance_section",
+  "hotel_name",
+  "room_rate_per_day",
+  "cb_5",
+  "number_of_days",
+  "total_number_of_rooms",
+  "excess_amount",
+  "others_advance_section",
+  "is_taxable",
+  "item_name",
+  "order_no",
+  "principal_amount",
+  "column_break_8",
+  "vendor_address",
+  "vendor_gst_number",
+  "igst_value",
+  "remarks_section",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_basic_information",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "advance_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Advance Reason",
+   "options": "Expense Claim Type",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Amount of advance for the selected advance reason",
+   "fieldname": "advance_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Advance Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Start date for the advance reason selected - travel/hotel/date of expense. ",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "description": "End date for the advance reason selected. start date and end date can be same. ",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "description": "Mention the start location of travel/location of hotel/location of expense ",
+   "fieldname": "start_location",
+   "fieldtype": "Data",
+   "label": "Start Location",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:(doc.advance_type == \"Conveyance Cost in Delhi\" ||\ndoc.advance_type == \"Local Conveyance\" ||\ndoc.advance_type == \"Tour Claim\");",
+   "fieldname": "travel_advance_section",
+   "fieldtype": "Section Break",
+   "label": "Travel advance"
+  },
+  {
+   "description": "In case of travel allowance, mention the end location of travel for claim",
+   "fieldname": "end_location",
+   "fieldtype": "Data",
+   "label": "End Location"
+  },
+  {
+   "default": "0",
+   "description": "Check the box if the advance amount is mentioned for both to and from of the travel",
+   "fieldname": "include_return",
+   "fieldtype": "Check",
+   "label": "Includes return travel"
+  },
+  {
+   "description": "Mention the number of taxis/auto for which the advance is required",
+   "fieldname": "number_of_taxi",
+   "fieldtype": "Int",
+   "label": "Number of Taxi/Auto"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mode_of_travel",
+   "fieldtype": "Select",
+   "label": "Mode of Travel",
+   "options": "\nTaxi\nAuto/Taxi\nBus\nLocal Train\nRickshaw\nFlight\nOthers"
+  },
+  {
+   "description": "Mention the per day cost of one taxi/auto (if there are more than 1 taxi/auto, please mention the number of taxis/auto to calculate the advance amount)",
+   "fieldname": "per_day_cost_of_taxi",
+   "fieldtype": "Currency",
+   "label": "Per Day Cost of Taxi/Auto"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:(doc.advance_type == \"Hotel/Room Accommodation\");",
+   "fieldname": "accomodation_advance_section",
+   "fieldtype": "Section Break",
+   "label": "Accomodation advance"
+  },
+  {
+   "description": "Mention the name of the hotel in which the accommodation is taken",
+   "fieldname": "hotel_name",
+   "fieldtype": "Data",
+   "label": "Hotel Name"
+  },
+  {
+   "description": "Mention the room rate per day for one room here (if there are more than 1 rooms, then the system will calculate the amount using the total number of rooms field",
+   "fieldname": "room_rate_per_day",
+   "fieldtype": "Currency",
+   "label": "Room Rate Per Day"
+  },
+  {
+   "fieldname": "cb_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Calculated number of days for which hotel advance is required based on start and end date mentions",
+   "fieldname": "number_of_days",
+   "fieldtype": "Int",
+   "label": "Number of days",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "description": "Mention the number of rooms for which the advance is required",
+   "fieldname": "total_number_of_rooms",
+   "fieldtype": "Int",
+   "label": "Total Number of Rooms"
+  },
+  {
+   "description": "Calculates the amount that exceeds the per day amount of Rs 500",
+   "fieldname": "excess_amount",
+   "fieldtype": "Currency",
+   "label": "Excess Amount",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "doc.advance_type != \"Conveyance Cost in Delhi\" ||\ndoc.advance_type != \"Local Conveyance\" ||\ndoc.advance_type != \"Tour Claim\" ||\ndoc.advance_type != \"Hotel/Room Accommodation\";",
+   "fieldname": "others_advance_section",
+   "fieldtype": "Section Break",
+   "label": "Others advance"
+  },
+  {
+   "default": "0",
+   "description": "Select if the expense bill is taxable",
+   "fieldname": "is_taxable",
+   "fieldtype": "Check",
+   "label": "Bill is taxable"
+  },
+  {
+   "description": "Mandatory in case of all expenses except travel and hotel. Mention the item for which advance is required",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "order_no",
+   "fieldtype": "Data",
+   "label": "Order No/Bill No"
+  },
+  {
+   "fieldname": "principal_amount",
+   "fieldtype": "Currency",
+   "label": "Principal Value/Amount"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Mandatory if bill is taxable",
+   "fieldname": "vendor_address",
+   "fieldtype": "Data",
+   "label": "Vendor address"
+  },
+  {
+   "description": "Mention the vendor gst number if the bill is taxable",
+   "fieldname": "vendor_gst_number",
+   "fieldtype": "Data",
+   "label": "Vendor GST Number"
+  },
+  {
+   "description": "Mention the amount for IGST mentioned in the bill",
+   "fieldname": "igst_value",
+   "fieldtype": "Currency",
+   "label": "IGST Value"
+  },
+  {
+   "fieldname": "remarks_section",
+   "fieldtype": "Section Break",
+   "label": "Remarks Section"
+  },
+  {
+   "depends_on": "eval: doc.advance_type == \"Consumables\";",
+   "description": "Mandatory for Consumables",
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-19 20:22:25.118545",
+ "modified_by": "Administrator",
+ "module": "Ircengg App",
+ "name": "Employee Advance Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

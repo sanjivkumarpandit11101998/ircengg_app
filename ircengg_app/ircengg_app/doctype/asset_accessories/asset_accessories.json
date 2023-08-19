@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-03-25 10:24:17.967360",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "asset_accessories"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset_accessories",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset Accessories",
+   "options": "Asset",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-19 20:23:17.574389",
+ "modified_by": "Administrator",
+ "module": "Ircengg App",
+ "name": "Asset Accessories",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
