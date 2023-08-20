@@ -2,7 +2,7 @@ import frappe
 def update_task_conditions(user):
     role = frappe.db.get_value("User", frappe.session.user, "role_profile_name")
 
-    if role not in ['CEO', 'Administrator', 'Sales Team']:
+    if role not in ['CEO', 'Administrator', 'Sales Team'] and frappe.session.user!='Administrator':
         project_list = frappe.db.get_list("Project", {'project_manager': frappe.session.user}, pluck="name")
         user = "%" + frappe.session.user + "%"
 

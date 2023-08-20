@@ -134,11 +134,9 @@ doc_events = {
     "Task": {
 		"on_update": "ircengg_app.ircengg_app.custom_py.task.task_assignment",
         "after_insert": "ircengg_app.ircengg_app.custom_py.task.task_before_after_days",
-        "on_update": "ircengg_app.ircengg_app.custom_py.task.update_task_conditions"
 	},
     "Project": {
-		"on_update": "ircengg_app.ircengg_app.custom_py.project.task_dependency",
-        "on_update": "ircengg_app.ircengg_app.custom_py.project.get_user_conditions"
+		"on_update": "ircengg_app.ircengg_app.custom_py.project.task_dependency"
 	},
 	"Sales Order": {
 		"on_update": "ircengg_app.ircengg_app.custom_py.sales_order.sales_order"
