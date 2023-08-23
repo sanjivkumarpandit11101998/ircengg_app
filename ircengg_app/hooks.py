@@ -41,10 +41,12 @@ doctype_js = {"Project" : "public/js/project.js",
               "Employee" : "public/js/employee.js",
               "Attendance" : "public/js/attendance.js",
               "Attendance Request" : "public/js/attendance_request.js",
-              "Employee Advance" : "public/js/employee_advance.js"
+              "Employee Advance" : "public/js/employee_advance.js",
+              "Employee Checkin" : "public/js/employee_checkin.js"
               }
 doctype_list_js = {"Attendance" : "public/js/attendance_list.js",
-                   "Employee" : "public/js/employee_list.js"}
+                   "Employee" : "public/js/employee_list.js",
+				   "Employee Checkin" : "public/js/employee_checkin_list_indicator.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
